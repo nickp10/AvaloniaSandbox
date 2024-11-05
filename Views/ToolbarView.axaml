@@ -1,0 +1,18 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="using:GetStartedApp.ViewModels"
+             mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+             x:Class="GetStartedApp.Views.ToolbarView"
+             x:DataType="vm:ToolbarViewModel">
+	<WrapPanel>
+		<Button Content="Button 1" Margin="10"/>
+		<ToggleButton Margin="10" IsChecked="{Binding IsPopupOpen}" Content="Open the popup" x:Name="PopupToggleButton"/>
+		<Popup IsOpen="{Binding IsPopupOpen, Mode=TwoWay}" IsLightDismissEnabled="True" PlacementMode="AnchorAndGravity" PlacementAnchor="BottomLeft" PlacementGravity="BottomRight" PlacementTarget="{Binding ElementName=PopupToggleButton}">
+			<Border Width="400" Height="200" Background="#CCCCCC" BorderThickness="1" BorderBrush="Black">
+				<ContentControl Content="{Binding ToolbarPopup}"/>
+			</Border>
+		</Popup>
+	</WrapPanel>
+</UserControl>
